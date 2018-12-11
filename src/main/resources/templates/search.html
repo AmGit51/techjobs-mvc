@@ -34,7 +34,13 @@
         <input type="submit" value="Search" />
     </form>
 
+    <div th:if="${jobs} and ${jobs.isEmpty()}">
+        <h3 th:text="${jobs.size()} + ' Result(s)'"></h3>
+    </div>
+
     <hr />
+    <div th:if="${jobs} and ${jobs.size()}">
+        <h3 th:text="${jobs.size()} + ' Result(s)'"></h3>
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
     <table class="job-listing" th:each="job : ${jobs}">
@@ -43,6 +49,7 @@
             <td class="last-child" th:text="${#strings.capitalizeWords(trait.getValue())}"></td>
         </tr>
     </table>
+    </div>
 </div>
 
 </body>
